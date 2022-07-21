@@ -1,11 +1,109 @@
-// Soldier
-class Soldier {}
+// Iteration 1: Soldier
 
-// Viking
-class Viking {}
+class Soldier {
+    constructor(healthArg, strengthArg) {
+        this.health = healthArg
+        this.strength = strengthArg
+    }
+    attack() {
+        return this.strength
+    }
 
-// Saxon
-class Saxon {}
 
-// War
-class War {}
+    receiveDamage(damage) {
+        this.health -= damage
+    }
+
+}
+
+
+
+// Iteration 2: Viking
+
+class Viking extends Soldier {
+    constructor(nameArg, healthArg, strengthArg) {
+        super(healthArg, strengthArg)
+        this.name = nameArg
+
+    }
+
+    receiveDamage(damage) {
+        this.health -= damage
+
+        if (this.health > 0) {
+            return `${this.name} has received ${damage} points of damage`
+        } else if (this.health <= 0) {
+            return `${this.name} has died in act of combat`
+        }
+    }
+
+    battleCry() {
+        return "Odin Owns You All!"
+    }
+
+}
+
+// Iteration 3: Saxon
+
+class Saxon extends Soldier {
+    constructor(healthArg, strengthArg) {
+        super(healthArg, strengthArg)
+
+    }
+
+    receiveDamage(damage) {
+        this.health -= damage
+
+        if (this.health > 0) {
+            return `A Saxon has received ${damage} points of damage`
+        } else if (this.health <= 0) {
+            return `A Saxon has died in combat`
+        }
+    }
+
+
+}
+// BONUS - Iteration 4: War
+
+
+class War {
+
+    constructor() {
+        this.vikingArmy = []
+        this.saxonArmy = []
+    }
+
+    addViking(Viking) {
+        this.vikingArmy.push(Viking)
+    }
+
+    addSaxon(Saxon) {
+        this.saxonArmy.push(Saxon)
+    }
+
+
+    vikingAttack() {
+        randomViking = Math.floor(Math.random() * this.vikingArmy.length)
+        randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+
+        randomSaxon.receiveDamage(damage) = randomViking.attack()
+
+        if (randomSaxon.health === 0) {
+
+        }
+    }
+
+    saxonAttack() {
+        randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+
+
+    }
+    //BONUS - Iteration 5
+    showStatus() {
+        if (Saxon.saxonArmy == 0) {
+            return "Vikings have won the war of the century!"
+        } else if (Viking.vikingArmy === 0) {
+            return "Saxons have fought for their lives and survive another day..."
+        }
+    }
+}
